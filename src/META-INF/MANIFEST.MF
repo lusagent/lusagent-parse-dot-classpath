@@ -1,0 +1,1 @@
+Main-Class: org.kohsuke.pdc.ParseDotClasspath
