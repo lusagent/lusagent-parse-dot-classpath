@@ -93,6 +93,10 @@ public class ParseDotClasspath {
                 String kind = atts.getValue("kind");
                 if(kind.equals("lib") || kind.equals("output") || kind.equals("src"))
                     builder.add( new File(baseDir,atts.getValue("path")));
+                
+                String output = atts.getValue("output");
+                if(output!=null )
+                    builder.add( new File(baseDir,output));
             }
         });
         parser.parse(dotClasspath.toURL().toString());
