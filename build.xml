@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<project name="parse-dot-classpath" default="jar">
+	<target name="compile">
+		<mkdir dir="bin"/>
+		<javac srcdir="src" destdir="bin" debug="on" />
+	</target>
+	
+	<target name="jar" depends="compile">
+		<jar destfile="parse-dot-classpath.jar"
+				 manifest="src/META-INF/MANIFEST.MF">
+			<fileset dir="bin"/>
+			<fileset dir="." includes="LICENSE.txt"/>
+		</jar>
+	</target>
+	
+	<target name="clean">
+		<delete dir="bin"/>
+	</target>
+</project>
