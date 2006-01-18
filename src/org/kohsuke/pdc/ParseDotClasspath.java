@@ -91,14 +91,25 @@ public class ParseDotClasspath {
                     return; // unknown
                 
                 String kind = atts.getValue("kind");
-                if(kind.equals("lib") || kind.equals("output") || kind.equals("src"))
-                    builder.add( new File(baseDir,atts.getValue("path")));
+                if(kind.equals("lib") || kind.equals("output") || kind.equals("src")) {
+                    builder.add(absolutize(baseDir,atts.getValue("path")));
+                }
                 
                 String output = atts.getValue("output");
-                if(output!=null )
-                    builder.add( new File(baseDir,output));
+                if(output!=null) {
+                    builder.add(absolutize(baseDir,output));
+                }
             }
         });
         parser.parse(dotClasspath.toURL().toString());
+    }
+
+    private static File absolutize( File base, String path ) {
+        path = path.replace('/',File.separatorChar);
+        File child = new File(path);
+        if(child.isAbsolute())
+            return child;
+        else
+            return new File(base,path);
     }
 }
