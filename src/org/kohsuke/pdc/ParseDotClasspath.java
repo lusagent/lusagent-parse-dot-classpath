@@ -26,7 +26,7 @@ public class ParseDotClasspath {
 
   private static final String KIND_VAR = "var";
 
-  static Set kinds = new HashSet(Arrays.asList(new String[]{"lib", "output", "src", KIND_VAR}));
+  static Set kinds = new HashSet(Arrays.asList(new String[]{"lib"}));
 
   private static void usage ()
   {
